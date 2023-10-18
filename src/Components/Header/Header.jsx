@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Header = () => {
+  const {user}=useContext(AuthContext)
 
    const navbar=<>
      <li className="uppercase ml-2 font-lg">
@@ -53,6 +56,10 @@ const Header = () => {
     </ul>
   </div>
   <div className="navbar-end">
+
+    {
+      user && <span>{user.email}</span>
+    }
     <NavLink to="/contact" className="btn">constact</NavLink>
   </div>
 </div>
