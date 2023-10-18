@@ -7,11 +7,7 @@ const Home = () => {
    
     return (
         <div>
-           
-
-
-           <div>
-
+         
            <div className="">
             <h4 className="text-center font-semibold uppercase py-6 text-5xl"> why Choice us</h4>
   <div className="hero-content flex-col gap-14 p-14 lg:flex-row">
@@ -25,16 +21,17 @@ const Home = () => {
     </div>
   </div>
 </div>  
-</div>
+
 {/* car band section  */}
 
-
 <div>
-
-</div>
-
+        <h3 className="text-center text-5xl py-4 uppercase">our brands</h3>
+    </div>
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-14 gap-10">
+    
+    
     {
+        
         barnds.map(barnd=> <DisplayBand key={barnd.id} barnd={barnd}></DisplayBand>)
     }
 </div>
