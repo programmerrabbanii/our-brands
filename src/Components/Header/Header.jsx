@@ -10,7 +10,7 @@ const Header = () => {
     <NavLink to="/addproduct">add to product</NavLink>
    </li>
    <li className="uppercase ml-2 font-lg">
-    <NavLink to="/addcard">add to card</NavLink>
+    <NavLink to="/addcard"> my cart</NavLink>
    </li>
 
    <li className="uppercase ml-2 font-lg">
