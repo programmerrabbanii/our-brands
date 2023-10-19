@@ -1,9 +1,17 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Header = () => {
-  const {user}=useContext(AuthContext)
+  const {user,logout}=useContext(AuthContext)
+
+  const handlerGetUser=()=>{
+    logout()
+    .then(()=>console.log('user login sussecfully'))
+    .catch(error=>{
+      console.error(error)
+    })
+  }
 
    const navbar=<>
      <li className="uppercase ml-2 font-lg">
@@ -58,9 +66,16 @@ const Header = () => {
   <div className="navbar-end">
 
     {
-      user && <span>{user.email}</span>
+      user ?
+       <>
+       <span>{user.email}</span>
+       <a onClick={handlerGetUser}  className="btn btn-sm">sign out</a>
+
+       
+       </>
+       : <Link to='/login' className="btn btn-sm"><button>LOGIN</button></Link>
+
     }
-    <NavLink to="/contact" className="btn">constact</NavLink>
   </div>
 </div>
             

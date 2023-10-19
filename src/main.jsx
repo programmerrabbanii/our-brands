@@ -11,10 +11,10 @@ import ErrorPage from './ErrorPage/ErrorPage';
 import Root from './Root/Root';
 import AddProduct from './Pages/AddProduct';
 import AddCard from './Pages/AddCard';
-import Contact from './Pages/Contact';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import AuthProvider from './provider/AuthProvider';
+import PrivateRouters from './private/PrivateRouters';
 
 const router = createBrowserRouter([
   {
@@ -34,12 +34,9 @@ const router = createBrowserRouter([
       },
       {
         path:"/addcard",
-        element:<AddCard></AddCard>
+        element:<PrivateRouters><AddCard></AddCard></PrivateRouters>
       },
-      {
-        path:'/contact',
-        element:<Contact></Contact>
-      },
+      
       {
         path:'/login',
         element:<Login></Login>
