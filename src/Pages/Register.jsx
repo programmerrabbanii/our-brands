@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
     const {createUser}=useContext(AuthContext)
     const [registerError,setRegisterError]=useState('')
+    const [sucess,setsucsses]=useState()
     const [hiddenPass,setHiddenPass]=useState()
 
     const handleRegister =e=>{
@@ -16,18 +18,29 @@ const Register = () => {
         const photo=e.target.photo.value;
 
         console.log(name,email,password,photo)
+        setRegisterError('')
+         
+        if(password.length < 6){
+            setRegisterError('Password Should Be At Least 6 Characters')
+            return
+        }
 
-       
         createUser(email,password)
         .then(result=>{
             console.log(result.user)
+            setsucsses(
+                Swal.fire(
+                    'Good Job',
+                    'You are successfully registration done',
+                    'success'
+                  )
+            )
         })
         .catch(error=>{
             console.error(error)
+            setRegisterError(error.message)
         })
         
-
-       
 
     }
     return (
@@ -47,7 +60,9 @@ const Register = () => {
                     <input className="border p-2 w-full uppercase mb-2 hover:bg-pink-600" type="submit" name="regiter" />
                 </form>
 
-
+                 {
+                    registerError && <p className="text-red-600 text-center capitalize ">{registerError}</p>
+                 }
                 <p className="text-center text-lg capitalize py-5"> already have a account please <Link to='/login'className="btn btn-group text-lg">LOGIN</Link ></p>
             </div>
             

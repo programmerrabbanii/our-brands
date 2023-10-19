@@ -1,8 +1,11 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import { AiFillGoogleCircle } from 'react-icons/ai';
+
 const Login = () => {
-    const {signUsers}=useContext(AuthContext)
+    const {signUsers,signInGoogle}=useContext(AuthContext)
+    const navigat=useNavigate()
     const handleLoging =e=>{
         e.preventDefault()
         const email=e.target.email.value;
@@ -14,11 +17,25 @@ const Login = () => {
         signUsers(email,password)
         .then(result=>{
             console.log(result)
+            e.target.reset()
+            navigat('/')
         })
         .catch(error=>{
             console.error(error)
         })
     }
+    
+    const handleWithGoogle=()=>{
+        signInGoogle()
+        .then(result=>{
+            console.log(result)
+        })
+        .catch(error=>{
+            console.error(error)
+        })
+
+    }
+
     return (
         <div>
            
@@ -53,7 +70,17 @@ const Login = () => {
       </form>
 
       <p className="text-center text-lg capitalize py-5  ">new here please <Link className="btn btn-group text-lg" to='/register'>REGISTER</Link></p>
+      <div className="text-center">
+        <div className="py-4">
+        
+
+        <button onClick={handleWithGoogle} 
+        
+        className="text-center p-3 text-violet-600 font-semibold  uppercase border">google</button>
+        </div>
     </div>
+    </div>
+    
   </div>
 </div>
             

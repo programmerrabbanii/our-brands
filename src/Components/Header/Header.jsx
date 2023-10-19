@@ -17,12 +17,17 @@ const Header = () => {
      <li className="uppercase ml-2 font-lg">
     <NavLink to="/">home</NavLink>
    </li>
-   <li className="uppercase ml-2 font-lg">
+   {
+    user && <>
+    
+    <li className="uppercase ml-2 font-lg">
     <NavLink to="/addproduct">add to product</NavLink>
    </li>
    <li className="uppercase ml-2 font-lg">
     <NavLink to="/addcard"> my cart</NavLink>
    </li>
+    </>
+   }
 
    <li className="uppercase ml-2 font-lg">
     <NavLink to="/login">login</NavLink>
