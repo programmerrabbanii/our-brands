@@ -2,12 +2,15 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
+import { AiFillEyeInvisible } from 'react-icons/ai';
+import { AiFillEye } from 'react-icons/ai';
+
 
 const Register = () => {
     const {createUser}=useContext(AuthContext)
     const [registerError,setRegisterError]=useState('')
     const [sucess,setsucsses]=useState()
-    const [hiddenPass,setHiddenPass]=useState()
+    const [showPassword,setShowPassword]=useState()
 
     const handleRegister =e=>{
         e.preventDefault();
@@ -22,6 +25,10 @@ const Register = () => {
          
         if(password.length < 6){
             setRegisterError('Password Should Be At Least 6 Characters')
+            return
+        }
+        else if(!/[A-Z]/.test(password)){
+            setRegisterError('Your password should have at least one uppercase and special character')
             return
         }
 
@@ -51,9 +58,19 @@ const Register = () => {
                 <form onSubmit={handleRegister}>
                     <input className="border p-2 w-full capitalize mb-2" type="text" name="name" placeholder="name" /> <br />
                     <input  className="border p-2 w-full capitalize mb-2" type="email" name="email" placeholder="email" /> <br />
+
+                    
+                    <div className="relative">
+
                     <input className="border p-2 w-full capitalize mb-2" 
                     
-                    type={  "password"} name="password" placeholder="password" /> <br />
+                    type={ showPassword ? "text" :"password"} name="password" placeholder="password" /> <br/>
+
+                    <p className="absolute top-3 -right-1 px-2" onClick={()=>setShowPassword(!showPassword)}> {showPassword ? <AiFillEye></AiFillEye> : <AiFillEyeInvisible></AiFillEyeInvisible>} </p>
+
+                    </div>
+
+                    
 
 
                     <input className="border p-2 w-full capitalize mb-2" type="text" name="photo" placeholder="photo URL" /> <br />
