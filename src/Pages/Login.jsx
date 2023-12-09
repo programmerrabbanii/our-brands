@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import { AiFillGoogleCircle } from 'react-icons/ai';
 
 const Login = () => {
     const {signUsers,signInGoogle}=useContext(AuthContext)

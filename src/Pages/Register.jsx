@@ -6,6 +6,7 @@ import { AiFillEyeInvisible } from 'react-icons/ai';
 import { AiFillEye } from 'react-icons/ai';
 
 
+
 const Register = () => {
     const {createUser}=useContext(AuthContext)
     const [registerError,setRegisterError]=useState('')
@@ -70,7 +71,7 @@ const Register = () => {
 
                     </div>
 
-                    
+
 
 
                     <input className="border p-2 w-full capitalize mb-2" type="text" name="photo" placeholder="photo URL" /> <br />

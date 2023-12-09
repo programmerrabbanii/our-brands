@@ -10,16 +10,17 @@ const DisplayBand = ({barnd}) => {
             <div className=" rounded-lg bg-base-100 shadow-xl">
                 
   <figure><img className="h-60" src={images} alt="Shoes" /></figure>
-  <div className="card-body">
+  <div data-aos="zoom-in" className="card-body">
     <h2 className="card-title"></h2>
     <p className="capitalize text-2xl">{title}</p>
     <div className="card-actions justify-end">
       <button className="btn btn-primary"> Show  Deteles</button>
     </div> 
-  </div>
+  </div> 
 </div>
         </div>
     );
 };
 
-export default DisplayBand;
+export default DisplayBand; 
+
